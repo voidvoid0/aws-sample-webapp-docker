@@ -1,0 +1,17 @@
+version: '3'
+services:
+  app:
+    build: .
+    environment:
+      RDS_HOSTNAME: ${RDS_HOSTNAME}
+      RDS_PORT: ${RDS_PORT}
+      RDS_USERNAME: ${RDS_USERNAME}
+      RDS_PASSWORD: ${RDS_PASSWORD}
+      RDS_DB_NAME: ${RDS_DB_NAME}
+    working_dir: /app
+    volumes:
+      - .:/app
+      - ~/.m2:/root/.m2
+    ports:
+      - "5000:8080"
+    command: mvn spring-boot:run

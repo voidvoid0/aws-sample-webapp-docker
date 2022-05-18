@@ -1,0 +1,17 @@
+version: '3'
+services:
+  app:
+    build: .
+    environment:
+      RDS_HOSTNAME: 192.168.1.89
+      RDS_PORT: 3306
+      RDS_USERNAME: publicfunc
+      RDS_PASSWORD: password
+      RDS_DB_NAME: profile
+    working_dir: /app
+    volumes:
+      - .:/app
+      - C:/Users/layasathya/.m2:/root/.m2
+    ports:
+      - 8080:8080
+    command: mvn spring-boot:run
